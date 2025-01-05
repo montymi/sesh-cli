@@ -1,0 +1,18 @@
+[settings]
+debug = false
+clerk = ollama
+librarian = file
+llm = llama3.1:latest
+# theme = dark
+# language = en
+
+[library.file]
+data = library
+
+[library.mongo]
+url =
+username =
+password =
+
+[keys]
+openai = 

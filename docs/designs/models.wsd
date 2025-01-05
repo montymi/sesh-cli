@@ -1,0 +1,60 @@
+@startuml
+
+title Microservices Architecture for SESH
+
+package UserService {
+    class User {
+        -user_id: str
+        -username: str
+        -password: str
+        +authenticate(): Token
+        +manageSession(): Session
+    }
+}
+
+package SessionManagementService {
+    class SessionManager {
+        +createSession(user_id: str): Session
+        +terminateSession(session_id: str): None
+    }
+}
+
+package SessionComponentServices {
+    class LibrarianService {
+        +getInformation(session_id: str): Data
+    }
+
+    class ClerkService {
+        +executeTask(session_id: str, task: Task): Result
+    }
+
+    class JournalService {
+        +saveEntry(session_id: str, entry: str): None
+        +retrieveEntries(session_id: str): List
+    }
+
+    class HabitsService {
+        +trackHabit(session_id: str, habit: Habit): None
+    }
+}
+
+class APIService {
+    +routeRequest(request: Request): Response
+}
+
+package ConfigService {
+    class ConfigManager {
+        +getConfig(service: str): Config
+    }
+}
+
+UserService.User -- APIService: "Handles authentication"
+APIService - SessionManagementService.SessionManager: "Routes session management requests"
+SessionManagementService.SessionManager --> SessionComponentServices: "Manages session lifecycle and interactions"
+SessionComponentServices --> ConfigService.ConfigManager: "Fetches configurations"
+SessionComponentServices.LibrarianService -- SessionManagementService.SessionManager
+SessionComponentServices.ClerkService -- SessionManagementService.SessionManager
+SessionComponentServices.JournalService -- SessionManagementService.SessionManager
+SessionComponentServices.HabitsService -- SessionManagementService.SessionManager
+
+@enduml

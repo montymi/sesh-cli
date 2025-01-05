@@ -1,0 +1,4 @@
+{
+    "CONFIDENCE": "Please grade your confidence in the response, being transparent about any uncertainty. The confidence score should be a single score in format **Confidence 0-99** at the end of the content.",
+    "TAGGING": "Please add relevant tags about the topic of conversation to the bottom of the response given. The tags should be concise and written under a **Tags** flag for organization."
+}
