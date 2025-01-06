@@ -1,31 +1,44 @@
 <div id="readme-top"></div>
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <h1 align="center">SESH - Secure spaces for boundless creativity</h1>
+<!-- PROJECT SHIELDS -->
+[![Creator][creatorLogo]][creatorProfile]
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![GPL License][license-shield]][license-url]
 
-  <p align="center">
-    <a href="https://github.com/montymi/sesh">View Demo</a>
-    ·
-    <a href="https://github.com/montymi/sesh/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/montymi/sesh/issues">Request Feature</a>
-    <br />
-    <br />
-    Created by: <span><a href="https://www.github.com/montymi">Michael Montanaro</a></span> and <span><a href="https://www.github.com/ChandlerCree">Chandler Cree</a></span>
-  </p>
-</div>
+<!-- PROJECT HEADER -->
+# Sesh
 
+Secure Brainstorming Assistant and Productivity Manager
 
+<!-- CALL TO ACTIONS -->
+[![🚀 Explore Demo][demoLogo]][demoLogo-url]
+[![🐛 Report Bug][bugLogo]][bugLogo-url]
+[![✨ Request Feature][featureLogo]][featureLogo-url]
 
 <!-- TABLE OF CONTENTS -->
-<details align='center'>
+<details>
   <summary>Table of Contents</summary>
-  <ol align='left'>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#features">Features</a></li>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#installation">Installation</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#setup">Setup</a></li>
+      </ul></li>
+    <li><a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#advanced">Advanced</a></li>
+      </ul></li>
+    </li>
     <li><a href="#structure">Structure</a></li>
     <li><a href="#tasks">Tasks</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -35,43 +48,12 @@
   </ol>
 </details>
 
-### Built With
-[![Three][Three.js]][Three-url]
-[![React][React.js]][React-url]
-[![Django][Django.py]][Django-url]
-[![Redis][Redis.io]][Redis-url]
-[![LangChain][LangChain.icon]][LangChain-url]
-[![Ollama][Ollama.ai]][Ollama-url]
-[![PostgreSQL][PostgreSQL.icon]][PostgreSQL-url]
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[Three.js]: https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white
-[Three-url]: https://threejs.org/
-
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=white
-[React-url]: https://reactjs.org/
-
-[Django-url]: https://www.djangoproject.com/
-[Django.py]: https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white
-
-[Redis-url]: https://redis.io/
-[Redis.io]: https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white
-
-[LangChain-url]: https://langchain.com/
-[LangChain.icon]: https://img.shields.io/badge/LangChain-0D4B5C?style=for-the-badge&logo=langchain&logoColor=white
-
-[Ollama.ai]: https://img.shields.io/badge/Ollama-007C77?style=for-the-badge&logo=ollama
-[Ollama-url]: https://ollama.com/
-
-[PostgreSQL.icon]: https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white
-[PostgreSQL-url]: https://www.postgresql.org/
+<br />
 
 <!-- ABOUT THE PROJECT -->
-## About the Project
+## About The Project
 
 ### Problem Statement
-
 In an era where generating data—through notes, conversations, and creative outputs—is increasingly effortless, managing this overwhelming influx across fragmented platforms has become a significant barrier to productivity. This fragmentation not only leads to inefficiencies but also escalates security risks, complicating individuals' ability to coordinate their thoughts and projects. Consequently, many thinkers and organizations find themselves seeking cohesive solutions that effectively manage sensitive information while fostering collaboration and innovation.
 
 ### Target Audience
@@ -88,30 +70,36 @@ Custom research environments, known as sessions, offer unique workspaces where u
 
 Our vision is rooted in the principles of security, productivity, and creativity. We are committed to addressing the challenges faced by visionary thinkers and organizations, enabling them to manage their projects effectively while safeguarding sensitive information. By providing tailored research environments, we empower users to turn their ideas into actionable plans, facilitating collaboration and ensuring they can pursue their goals with clarity and confidence.
 
+### Built With
+
+[![Python][pythonLogo]][pythonLogo-url]
+[![Ollama][ollamaLogo]][ollamaLogo-url]
+[![OpenAI][openaiLogo]][openaiLogo-url]
+[![LangChain][langchainLogo]][langchainLogo-url]
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Installation
 
-### 0. Prerequisites
+### Prerequisites
 
-Ensure the following are installed:
+For running the models locally, ensure you have [ollama][ollamaLogo-url] installed and running on your device. An error message reminding you to open ollama will appear if you forget.
+Ensure you have [git](https://git-scm.com/), [python][pythonLogo-url] (and presumably pip too). Best bet, download the official release for your platform (Operating System) from the provided homepages and their download section. On Windows, your best bet is to use the resulting Git Bash application that will become available after installing git.
 
-- **Python** 3.8+ (for Django backend)
-- **Node.js** 14+ and **npm** 6+ (for React frontend)
-- **PostgreSQL** (or other compatible database if required)
-- **Daphne** (for ASGI compatibility with WebSockets)
-- **Ollama** (for private locally run LLMs)
-- **Git** (for version control)
-
-
-### 1. Clone the Repository
+Comfirm prerequisites by running the following command:
 ```bash
-git clone github.com:montymi/sesh.git
-cd sesh
+git --version && python --version && pip --version
 ```
 
-### 2. Isolate Installation with Virtual Environment
+Download and navigate into the repository:
+```bash
+git clone https://github.com/montymi/ClearDocs/ && cd ClearDocs
+```
+
+### Setup
+
+It is highly recommended to run this in an isolated installation with virtual environments.
 On Unix, Linux, BSD, macOS, and Cygwin:
 ```bash
 python -m venv venv
@@ -123,249 +111,236 @@ python -m venv venv
 venv/Scripts/activate
 ```
 
-From here, create two terminal instances (or three for development purposes). The first instance will host the backend and the second will host the frontend. The third is used to manage version git commands during testing and debugging. 
-
-### 3. Setup Backend in Instance 1
+Next install the dependencies for the project defined in `requirements.txt`. On all OS run:
 ```bash
-cd backend
 pip install -r requirements.txt
-python manage.py migrate
-daphne sesh.asgi:application
 ```
-
-The backend should now be running at [localhost:8000](http://localhost:8000). Navigate over to the second terminal instance which should have `sesh` set as the working directory. 
-
-### 4. Setup Frontend in Instance 2
-```bash
-cd frontend
-npm install
-npm start
-```
-
-The `frontend` is currently set to automatically send messages to the port from which the daphne server running the `backend` should be listening.
-From here, visit [localhost:3000](http://localhost:3000) to see the react project and attempt to register or login for access to the backend.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
-## Features
-### 1. File Querying with RAG
-- **Querying Documents**: Users can upload and query files within sessions using Retrieval-Augmented Generation (RAG) techniques, allowing for efficient retrieval of relevant information from extensive datasets.
+## Usage
 
-### 2. Brainstorming with Session-Based Context for LLMs
-- **Create Brainstorming Sessions**: Initiate sessions to generate and refine ideas. The context of each session helps guide the large language model (LLM) in providing tailored suggestions and insights.
+### Getting Started
 
-### 3. Zettelkasten-Inspired Note-Taking
-- **Single Input System**: Utilize a Zettelkasten-like system for note-taking that allows for free-flowing entry. Capture thoughts, ideas, and connections seamlessly within dedicated sessions, promoting a rich knowledge base.
+Run the CLI using the following command:
+```bash
+python src/main.py
+```
 
-### 4. Task Management
-- **Tickets and Epics**: Organize your work by creating tickets for individual tasks and grouping them into epics. This structure allows for better tracking of progress and responsibilities.
+The script will:
+- Display a list of all locally installed models within Ollama.
+- Prompt you to select a model to use.
 
-### 5. Project Management through Sessions
-- **Manage Projects**: Utilize sessions to manage various projects, enabling a focused environment for organizing tasks, notes, and resources specific to each project.
+After selecting a model, a list of saved conversations will appear and you can:
+- Resume a previous conversation for the selected model.
+- Test conversation responses across different models.
+- Start with a fresh conversation
 
-### 6. Collaboration Features
-- **Role-Based Access**: Set permissions for team members based on their roles within a project, ensuring that sensitive information is shared appropriately.
-- **In-Session Chat**: Collaborate in real-time with team members through chat functionality integrated within each session, fostering seamless communication.
+### Advanced
 
-### 7. Notifications and Updates
-- **Real-Time Notifications**: Stay informed with instant updates on project changes and messages within sessions via WebSocket connections.
+#### Vector Database Management
 
-### 8. Analytics and Reporting
-- **Performance Metrics**: Access analytics dashboards to review project performance, identify bottlenecks, and generate reports summarizing progress and outcomes.
+- Seamlessly manage vector databases to enhance Retrieval-Augmented Generation (RAG) efficiency.
+- Leverage optimized indexing for fast and accurate retrieval of relevant information.
+- Add, update, and remove data vectors for adaptive knowledge storage.
+
+#### Switching to OpenAI API
+
+- Effortlessly switch between locally installed models and the OpenAI API.
+- Configure API keys and settings directly through the CLI for quick integration.
+- Utilize OpenAI's advanced models for complex problem-solving and contextual tasks.
+
+#### Model Habit Management
+
+- Customize model behavior by defining "habits" for interaction styles, response formats, or tone preferences.
+- Save and load habit configurations to ensure consistency across sessions.
+
+#### Notes Creation and Management
+
+- Create, edit, and organize notes within isolated research bubbles.
+- Tag notes for quick reference and improved discoverability.
+
+#### Plugin Development and Integration
+
+- Build custom plugins to extend functionality and meet specific workflow needs.
+- Add plugins dynamically without interrupting active sessions.
+- Use the CLI to manage, enable, or disable plugins for seamless customization.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- STRUCTURE -->
 ## Structure
-*Please note that this structure is subject to rapid change and is up to date as of 10/30/2024 at 00:35.*
-### Backend
+
 ```
-|   db.sqlite3
-|   manage.py
-|   requirements.txt
-|
-+---account
-|   |   admin.py
-|   |   apps.py
-|   |   models.py
-|   |   serializers.py
-|   |   tests.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |
-|
-+---clerk
-|   |   admin.py
-|   |   apps.py
-|   |   chat_consumer.py
-|   |   consumers.py
-|   |   enums.py
-|   |   models.py
-|   |   routing.py
-|   |   serializers.py
-|   |   urls.py
-|   |   views.py
-|   |   __init__.py
-|   |
-|   |
-|   +---services
-|   |   |   service_controller.py
-|   |   |   __init__.py
-|   |   |
-|   |   +---commands
-|   |   |      chatbot_service.py
-|   |
-|   +---tests
-|   |       test_conversation.py
-|   |       test_entry.py
-|   |       test_note.py
-|   |       test_socket.py
-|   |       test_task.py
-|   |       __init__.py
-|
-\---sesh
-    |   asgi.py
-    |   settings.py
-    |   urls.py
-    |   wsgi.py
-    |   __init__.py
+.gitignore
+config.ini
+config.ini.example
+docs/
+├── designs/
+│   ├── models.wsd
+│   └── tiers.wsd
+library/
+├── habits.json
+├── resources/
+│   ├── conversations/
+│   ├── journal/
+│   ├── plugins/
+│   └── vectors/
+README.md
+requirements.txt
+sesh.log
+src/
+├── controllers/
+│   ├── appcontroller.py
+│   ├── clerkcontroller.py
+│   ├── libcontroller.py
+│   ├── servicecontroller.py
+│   └── usercontroller.py
+├── main.py
+├── models/
+│   ├── __init__.py
+│   ├── app.py
+│   ├── clerk.py
+│   ├── commands.py
+│   ├── DBLibrarian.py
+│   ├── habits.py
+│   ├── importers/
+│   │   ├── __init__.py
+│   │   ├── CSVImporter.py
+│   │   ├── DirectoryImporter.py
+│   │   ├── DocxImporter.py
+│   │   ├── ImageImporter.py
+│   │   ├── importer.py
+│   │   ├── PDFImporter.py
+│   │   ├── PythonImporter.py
+│   │   ├── RecursiveDirectoryImporter.py
+│   │   ├── TextImporter.py
+│   │   └── URLImporter.py
+│   ├── journal.py
+│   ├── librarian.py
+│   ├── managers.py
+│   └── user.py
+└── views/
+    └── cli.py
+sandbox/
+├── __init__.py
+├── chain.py
+├── chat-app.py
+├── clerk.py
+├── colored-input.py
+├── dict.py
+├── input.py
+├── log.txt
+├── testing.py
+├── translator.py
+└── tts.py
 ```
-### Frontend
-```
-|   .gitignore
-|   package.json
-|   README.md
-+---public
-|  |   favicon.ico
-|  |   index.html
-|  |   logo192.png
-|  |   logo512.png
-|  |   manifest.json
-|  |   robots.txt
-|  |   styles.css
-|  |
-|  \---services
-|      +---account
-|      |       login.html
-|      |       login.js
-|      |       profile.html
-|      |       profile.js
-|      |       register.html
-|      |       register.js
-|      |
-|      \---clerk
-|              input.html
-|              input.js
-+---src
-|  |   App.css
-|  |   App.js
-|  |   App.test.js
-|  |   index.css
-|  |   index.js
-|  |   logo.svg
-|  |   reportWebVitals.js
-|  |   setupTests.js
-|  |   theme.js
-|  |
-|  +---components
-|  |       BulletinPopup.js
-|  |       BulletinStyles.css
-|  |       ClerkInput.js
-|  |       Dashboard.js
-|  |       DashboardStyles.css
-|  |       EntryPopup.js
-|  |       EntryStyles.css
-|  |       Galaxy.js
-|  |       GalaxyStyles.css
-|  |       LoginPopup.js
-|  |       LoginStyles.css
-|  |       ProfilePopup.js
-|  |       ProfileStyles.css
-|  |       RegisterPopup.js
-|  |       RegisterStyles.css
-|  |       Stream.js
-|  |
-|  +---services
-|  |   +---account
-|  |   |       AccountManager.js
-|  |   |       script.js
-|  |   |
-|  |   +---clerk
-|  |   |       InputManager.js
-|  |   |       script.js
-|  |   |       WebSocketManager.js
-|  |   |
-|  |   \---session
-|  |           SessionManager.js
-|  |
-|  \---store
-|          authActions.js
-|          authReducer.js
-|          entryActions.js
-|          entryReducer.js
-|          store.js
-|          userActions.js
-|          userReducer.js
-```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- TASKS -->
 ## Tasks
 
-Since we are in rapid development, tasks are only being listed and mainted in this Kanban Board: [CLERK](https://thelibrary.atlassian.net/jira/software/projects/CLERK/boards/1)
+- [ ] Fix reference error for `resources/`
+- [ ] Add CI/CD testing for deployment to `main`
+- [ ] package and post to PIP
 
-See the [open issues](https://github.com/montymi/sesh/issues) for a list of issues and proposed features.
+See the [open issues](https://github.com/montymi/sesh-cli/issues) for a full list of issues and proposed features.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
 1. [Fork the Project](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
-2. Create your Feature Branch (`git checkout -b f/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin f/AmazingFeature`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. [Open a Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
 ## License
 
-Currently not under licensing.
+Distributed under the GPL-3.0 License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+<br />
 
 <!-- CONTACT -->
 ## Contact
 
-Michael Montanaro - [LinkedIn](https://www.linkedin.com/in/michael-montanaro/)
+Michael Montanaro
 
-Chandler Cree - [LinkedIn](https://www.linkedin.com/in/chandlercree/) 
+[![LinkedIn][linkedin-shield]][linkedin-url] 
+[![GitHub][github-shield]][github-url]
 
-Project Link: [sesh](https://github.com/montymi/sesh)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+<br />
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
+Use this space to list any resources used or that may be helpful in understanding the project
+
 * [Choose an Open Source License](https://choosealicense.com)
-* [Create React App](https://create-react-app.dev/)
-* [Create Django App](https://docs.djangoproject.com/en/5.1/intro/tutorial01/)
+* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
+* [Malven's Grid Cheatsheet](https://grid.malven.co/)
 * [GitHub Pages](https://pages.github.com)
 * [Font Awesome](https://fontawesome.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[openaiLogo]: https://img.shields.io/badge/Whisper-black?style=for-the-badge&logo=openai&logoColor=natural
+[openaiLogo-url]: https://openai.com/
+[langchainLogo-url]: https://langchain.com/
+[langchainLogo]: https://img.shields.io/badge/LangChain-black?style=for-the-badge&logo=langchain&logoColor=natural
+[ollamaLogo]: https://img.shields.io/badge/Ollama-black?style=for-the-badge&logo=ollama
+[ollamaLogo-url]: https://ollama.com/
+[demoLogo]: https://img.shields.io/badge/🚀%20Explore%20Demo-grey?style=for-the-badge
+[demoLogo-url]: https://github.com/montymi/ClearDocs
+[bugLogo]: https://img.shields.io/badge/🐛%20Report%20Bug-grey?style=for-the-badge
+[bugLogo-url]: https://github.com/montymi/ClearDocs/issues
+[featureLogo]: https://img.shields.io/badge/✨%20Request%20Feature-grey?style=for-the-badge
+[featureLogo-url]: https://github.com/montymi/ClearDocs/issues
+[pythonLogo]: https://img.shields.io/badge/Python-black?style=for-the-badge&logo=python&logoColor=natural
+[pythonLogo-url]: https://python.org/
+[markdownLogo]: https://img.shields.io/badge/Markdown-black?style=for-the-badge&logo=markdown&logoColor=natural
+[markdownLogo-url]: https://daringfireball.net/projects/markdown/
+[htmlLogo]: https://img.shields.io/badge/HTML5-black?style=for-the-badge&logo=html5&logoColor=natural
+[htmlLogo-url]: https://html.spec.whatwg.org/
+[creatorLogo]: https://img.shields.io/badge/-Created%20by%20montymi-maroon.svg?style=for-the-badge
+[creatorProfile]: https://montymi.com/
+[contributors-shield]: https://img.shields.io/github/contributors/montymi/ClearDocs.svg?style=for-the-badge
+[contributors-url]: https://github.com/montymi/ClearDocs/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/montymi/ClearDocs.svg?style=for-the-badge
+[forks-url]: https://github.com/montymi/ClearDocs/network/members
+[stars-shield]: https://img.shields.io/github/stars/montymi/ClearDocs.svg?style=for-the-badge
+[stars-url]: https://github.com/montymi/ClearDocs/stargazers
+[issues-shield]: https://img.shields.io/github/issues/montymi/ClearDocs.svg?style=for-the-badge
+[issues-url]: https://github.com/montymi/ClearDocs/issues
+[license-shield]: https://img.shields.io/github/license/montymi/ClearDocs.svg?style=for-the-badge
+[license-url]: https://github.com/montymi/ClearDocs/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin
+[linkedin-url]: https://linkedin.com/in/michael-montanaro
+[github-shield]: https://img.shields.io/badge/-GitHub-black.svg?style=for-the-badge&logo=github
+[github-url]: https://github.com/montymi
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
