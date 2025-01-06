@@ -9,9 +9,9 @@
 [![GPL License][license-shield]][license-url]
 
 <!-- PROJECT HEADER -->
-# ✨ SESH CLI
+# ✨ SESH CLI v0.3.0
 
-Release v0.3.0 of a cli-only version of a secure brainstorming assistant and productivity manager.
+CLI release of a secure brainstorming assistant and productivity manager. 
 
 <!-- CALL TO ACTIONS -->
 [![🚀 Explore Demo][demoLogo]][demoLogo-url]
