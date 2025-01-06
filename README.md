@@ -79,7 +79,7 @@ git --version && python --version && pip --version
 
 Download and navigate into the repository:
 ```bash
-git clone https://github.com/montymi/ClearDocs/ && cd ClearDocs
+git clone https://github.com/montymi/sesh-cli/ && cd sesh-cli
 ```
 
 ### Setup
