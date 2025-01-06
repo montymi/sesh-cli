@@ -85,6 +85,7 @@ git clone https://github.com/montymi/sesh-cli/ && cd sesh-cli
 ### Setup
 
 It is highly recommended to run this in an isolated installation with virtual environments.
+
 On Unix, Linux, BSD, macOS, and Cygwin:
 ```bash
 python -m venv venv
