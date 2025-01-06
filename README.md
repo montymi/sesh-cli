@@ -9,9 +9,9 @@
 [![GPL License][license-shield]][license-url]
 
 <!-- PROJECT HEADER -->
-# SESH CLI
+# ✨ SESH CLI
 
-Secure Brainstorming Assistant and Productivity Manager
+Release v0.3.0 of a cli-only version of a secure brainstorming assistant and productivity manager.
 
 <!-- CALL TO ACTIONS -->
 [![🚀 Explore Demo][demoLogo]][demoLogo-url]
@@ -301,11 +301,11 @@ Use this space to list any resources used or that may be helpful in understandin
 [ollamaLogo]: https://img.shields.io/badge/Ollama-black?style=for-the-badge&logo=ollama
 [ollamaLogo-url]: https://ollama.com/
 [demoLogo]: https://img.shields.io/badge/🚀%20Explore%20Demo-grey?style=for-the-badge
-[demoLogo-url]: https://github.com/montymi/ClearDocs
+[demoLogo-url]: https://github.com/montymi/sesh-cli
 [bugLogo]: https://img.shields.io/badge/🐛%20Report%20Bug-grey?style=for-the-badge
-[bugLogo-url]: https://github.com/montymi/ClearDocs/issues
+[bugLogo-url]: https://github.com/montymi/sesh-cli/issues
 [featureLogo]: https://img.shields.io/badge/✨%20Request%20Feature-grey?style=for-the-badge
-[featureLogo-url]: https://github.com/montymi/ClearDocs/issues
+[featureLogo-url]: https://github.com/montymi/sesh-cli/issues
 [pythonLogo]: https://img.shields.io/badge/Python-black?style=for-the-badge&logo=python&logoColor=natural
 [pythonLogo-url]: https://python.org/
 [markdownLogo]: https://img.shields.io/badge/Markdown-black?style=for-the-badge&logo=markdown&logoColor=natural
@@ -314,16 +314,16 @@ Use this space to list any resources used or that may be helpful in understandin
 [htmlLogo-url]: https://html.spec.whatwg.org/
 [creatorLogo]: https://img.shields.io/badge/-Created%20by%20montymi-maroon.svg?style=for-the-badge
 [creatorProfile]: https://montymi.com/
-[contributors-shield]: https://img.shields.io/github/contributors/montymi/ClearDocs.svg?style=for-the-badge
-[contributors-url]: https://github.com/montymi/ClearDocs/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/montymi/ClearDocs.svg?style=for-the-badge
-[forks-url]: https://github.com/montymi/ClearDocs/network/members
-[stars-shield]: https://img.shields.io/github/stars/montymi/ClearDocs.svg?style=for-the-badge
-[stars-url]: https://github.com/montymi/ClearDocs/stargazers
-[issues-shield]: https://img.shields.io/github/issues/montymi/ClearDocs.svg?style=for-the-badge
-[issues-url]: https://github.com/montymi/ClearDocs/issues
-[license-shield]: https://img.shields.io/github/license/montymi/ClearDocs.svg?style=for-the-badge
-[license-url]: https://github.com/montymi/ClearDocs/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/montymi/sesh-cli.svg?style=for-the-badge
+[contributors-url]: https://github.com/montymi/sesh-cli/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/montymi/sesh-cli.svg?style=for-the-badge
+[forks-url]: https://github.com/montymi/sesh-cli/network/members
+[stars-shield]: https://img.shields.io/github/stars/montymi/sesh-cli.svg?style=for-the-badge
+[stars-url]: https://github.com/montymi/sesh-cli/stargazers
+[issues-shield]: https://img.shields.io/github/issues/montymi/sesh-cli.svg?style=for-the-badge
+[issues-url]: https://github.com/montymi/sesh-cli/issues
+[license-shield]: https://img.shields.io/github/license/montymi/sesh-cli.svg?style=for-the-badge
+[license-url]: https://github.com/montymi/sesh-cli/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin
 [linkedin-url]: https://linkedin.com/in/michael-montanaro
 [github-shield]: https://img.shields.io/badge/-GitHub-black.svg?style=for-the-badge&logo=github
