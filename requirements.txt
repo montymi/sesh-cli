@@ -17,5 +17,7 @@ unstructured
 selenium
 whoosh
 langchain-chroma
+langchain-ollama
 langchain-openai
 pymongo
+"unstructured[csv]"
