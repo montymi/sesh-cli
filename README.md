@@ -110,9 +110,14 @@ pip install -r requirements.txt
 
 ### Getting Started
 
+Navigate into the main folder for the source code:
+```bash
+cd src
+```
+
 Run the CLI using the following command:
 ```bash
-python src/main.py
+python main.py
 ```
 
 The script will:
@@ -125,6 +130,8 @@ After selecting a model, a list of saved conversations will appear and you can:
 - Start with a fresh conversation
 
 ### Advanced
+
+The actual *guide* part is still a work in progress for the advanced features, but will be released soon.
 
 #### Vector Database Management
 
