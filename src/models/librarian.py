@@ -136,7 +136,7 @@ class Librarian:
     
     def similarity_search(self, query: str, num_docs: int=4) -> List[Document]:
         max_docs = self.vector_store._collection.count() # get doc count
-        k = min(num_docs, max_docs) # find min value between doc count and num_docs var
+        k = max(1, min(num_docs, max_docs)) # ensure k is at least 1
         
         return self.vector_store.similarity_search(query, k=k) # Perform the similarity search with the adjusted k
 
