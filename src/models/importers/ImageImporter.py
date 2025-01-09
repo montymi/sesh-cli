@@ -9,3 +9,4 @@ class ImageImporter(Importer):
 
     def execute(self, path):
         return UnstructuredImageLoader(path).load()
+        
