@@ -3,3 +3,7 @@
 sesh.log
 
 config.ini
+
+__pycache__
+
+library

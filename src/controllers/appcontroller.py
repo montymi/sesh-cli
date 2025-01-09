@@ -1,5 +1,6 @@
 from controllers.clerkcontroller import ClerkController
-from langchain_community.embeddings import OllamaEmbeddings, OpenAIEmbeddings
+from langchain_ollama import OllamaEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from models.app import App
 from models.clerk import GPTClerk, OllamaClerk
 from models.librarian import Librarian
@@ -25,7 +26,6 @@ class AppController:
         return Librarian(embedder=self.embedder, data_path=self.model.FILE_DATA_DIRECTORY)
 
     def __init__models__(self):
-        import pdb; pdb.set_trace()
         clerk = self.model.CLERK # if statement after
         if clerk == "gpt":
             self.model.LLM = "text-embedding-ada-002"

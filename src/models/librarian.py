@@ -135,7 +135,10 @@ class Librarian:
         self.vector_store.add_documents(chunks)
     
     def similarity_search(self, query: str, num_docs: int=4) -> List[Document]:
-        return self.vector_store.similarity_search(query, k=num_docs)
+        max_docs = self.vector_store._collection.count() # get doc count
+        k = min(num_docs, max_docs) # find min value between doc count and num_docs var
+        
+        return self.vector_store.similarity_search(query, k=k) # Perform the similarity search with the adjusted k
 
     def format_context(self, docs: List[Document]) -> str:
         return "\n\n".join(doc.page_content for doc in docs)

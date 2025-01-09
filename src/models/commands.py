@@ -98,20 +98,20 @@ class ImportServiceCommand(Command):
         if selection == "back":
             return
         else:
-            try:
-                if os.path.isfile(selection):
-                    importer = self._get_importer(selection)
-                    if importer:
-                        docs = importer.execute(selection)
-                    else:
-                        importer = self._get_importer(".txt")
-                        docs = importer.execute(selection)
-                else:
-                    extra_importers = self._get_extra_importers()
-                    importer = self._prompt_user_for_importer(view, extra_importers)
-                    if not importer:
-                        return
+            if os.path.isfile(selection):
+                importer = self._get_importer(selection)
+                if importer:
                     docs = importer.execute(selection)
+                else:
+                    importer = self._get_importer(".txt")
+                    docs = importer.execute(selection)
+            else:
+                extra_importers = self._get_extra_importers()
+                importer = self._prompt_user_for_importer(view, extra_importers)
+                if not importer:
+                    return
+            try:
+                docs = importer.execute(selection)
                 chunks = self.data.split(docs)
                 self.data.embed(chunks)
                 view.post_response(f"\033[92mSuccess\033[0m - uploaded {len(docs)} documents for {selection}")

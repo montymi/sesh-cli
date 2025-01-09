@@ -1,6 +1,7 @@
 from models.habits import Habits
 from models.librarian import Librarian
-from langchain_community.chat_models import ChatOllama, ChatOpenAI
+from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI
 
 
 class Clerk:
