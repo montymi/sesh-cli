@@ -9,7 +9,7 @@
 [![GPL License][license-shield]][license-url]
 
 <!-- PROJECT HEADER -->
-# ✨ sesh-cli
+# 📟 sesh-cli
 
 CLI release of a secure brainstorming assistant and productivity manager. 
 
