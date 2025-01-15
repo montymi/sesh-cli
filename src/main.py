@@ -9,6 +9,9 @@ try:
                 ac.run()
         except KeyboardInterrupt:
             return
+        except Exception as e:
+            print("Error configuring App Controller:", e)
+            return
 
     if __name__ == "__main__":
         parser = argparse.ArgumentParser(description='Clerk Application')
