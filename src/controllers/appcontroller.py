@@ -84,11 +84,15 @@ class AppController:
                 self.cc.handle_context()
             except KeyboardInterrupt:
                 self.cc.handle_save()
-                raise KeyboardInterrupt
+                break
 
     def run(self):
         try:
-            self.setup()
-            self.loop()
+            if not self.clerk:
+                return
+            self.view.post_welcome(self.clerk.greeting())
+            while True:   
+                self.setup()
+                self.loop()
         except KeyboardInterrupt:
             self.view.exit()
