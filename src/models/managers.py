@@ -11,6 +11,9 @@ class PluginManager:
         self.plugins = []
 
     def discover_plugins(self):
+        if not os.path.exists(self.plugin_directory):
+            os.makedirs(self.plugin_directory)
+
         sys.path.insert(0, self.plugin_directory)
         for module_name in os.listdir(self.plugin_directory):
             if module_name.endswith(".py") and module_name != "__init__.py":

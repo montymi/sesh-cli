@@ -20,3 +20,4 @@ langchain-chroma
 langchain-ollama
 langchain-openai
 pymongo
+aiofiles==23.2.1
