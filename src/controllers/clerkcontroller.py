@@ -12,11 +12,12 @@ class ClerkController:
         self.response = None
 
     def handle_welcome(self):
-        self.view.post_welcome(self.clerk.greeting())
         if self.lc.show_logs() == -1:
             return
-        self.view.post_response("Would you like to continue a conversation? ENTER to start new conversation.")
+        self.view.post_response("Would you like to continue a conversation? ENTER to start new conversation, exit to leave.")
         selection = self.view.get_service_input()
+        if selection.lower() == 'exit':
+            raise KeyboardInterrupt
         self.lc.load_log(selection)
         return 1
 
