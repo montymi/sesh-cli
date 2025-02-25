@@ -17,8 +17,8 @@ class Clerk:
     def greeting(self):
         return (f"Welcome!\n"
                 f"        (o_  Current Model: {self.model}\n"
-                f"  c_  \\\\\_\  Clock-In Time: {self.clock_in}\n"
-                f"\\\)   <____) Habits: {', '.join([habit for habit in self.habits.active()])}\n")
+                f"  c_  \\\\_\\  Clock-In Time: {self.clock_in}\n"
+                f"\\)   <____) Habits: {', '.join([habit for habit in self.habits.active()])}\n")
 
     def chat(self, prompt: dict, history=[]):
         try:
