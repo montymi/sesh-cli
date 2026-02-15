@@ -1,0 +1,3 @@
+[submodule "packages/linguist"]
+	path = packages/linguist
+	url = git@github.com:montymi/linguist.git

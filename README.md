@@ -9,22 +9,21 @@
 [![GPL License][license-shield]][license-url]
 
 <!-- PROJECT HEADER -->
-# 📟 sesh-cli
-
-CLI release of a secure brainstorming assistant and productivity manager. 
-
-<!-- CALL TO ACTIONS -->
-[![🚀 Explore Demo][demoLogo]][demoLogo-url]
-[![🐛 Report Bug][bugLogo]][bugLogo-url]
-[![✨ Request Feature][featureLogo]][featureLogo-url]
-
+<div align="center">
+  <h1>sesh-cli</h1>
+  <p>A secure CLI brainstorming assistant and productivity manager powered by local and cloud LLMs</p>
+  <a href="https://github.com/montymi/sesh-cli"><strong>Explore the docs</strong></a>
+  &middot;
+  <a href="https://github.com/montymi/sesh-cli/issues/new?labels=bug">Report Bug</a>
+  &middot;
+  <a href="https://github.com/montymi/sesh-cli/issues/new?labels=enhancement">Request Feature</a>
+</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
+    <li><a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -33,13 +32,16 @@ CLI release of a secure brainstorming assistant and productivity manager.
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#setup">Setup</a></li>
-      </ul></li>
+        <li><a href="#configuration">Configuration</a></li>
+      </ul>
+    </li>
     <li><a href="#usage">Usage</a>
       <ul>
         <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="#advanced">Advanced</a></li>
-      </ul></li>
+        <li><a href="#services">Services</a></li>
+      </ul>
     </li>
+    <li><a href="#architecture">Architecture</a></li>
     <li><a href="#structure">Structure</a></li>
     <li><a href="#tasks">Tasks</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -54,7 +56,18 @@ CLI release of a secure brainstorming assistant and productivity manager.
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This CLI tool is designed to help developers organize thoughts and streamline workflows with the power of AI—no fuss, just results. It combines security and fun, offering a lightweight brainstorming assistant that integrates smoothly into your setup. With Retrieval-Augmented Generation (RAG) and LLMs, you can easily manage ideas, projects, and sensitive data while staying productive. It’s a simple, secure way to boost your workflow with a local AI assistant, making development more efficient and enjoyable.
+Sesh is a CLI tool designed to help developers organize thoughts and streamline workflows with the power of AI. It combines security and simplicity, offering a lightweight brainstorming assistant that integrates smoothly into your development setup.
+
+With Retrieval-Augmented Generation (RAG) and LLMs, Sesh lets you manage ideas, projects, and sensitive data while staying productive. It supports both local models via [Ollama][ollamaLogo-url] and cloud models via the [OpenAI][openaiLogo-url] API, giving you full control over where your data goes.
+
+Key capabilities include:
+- **AI Chat with RAG** - Conversational AI augmented with your own documents via ChromaDB vector search
+- **Document Import** - Ingest PDFs, DOCX, CSVs, images, Python files, URLs, and directories
+- **Habit System** - Define persistent prompt augmentations (e.g., confidence scoring, topic tagging) that shape every response
+- **Journal & Notes** - Create, search, and manage notes with full-text search powered by Whoosh
+- **Conversation Management** - Save, load, trim, search, and export conversations
+- **Plugin System** - Extend functionality with custom command plugins discovered at runtime
+- **Speech & TTS** - Speech-to-text (Whisper) and text-to-speech (Kokoro) via the Linguist sub-package
 
 ### Built With
 
@@ -65,101 +78,128 @@ This CLI tool is designed to help developers organize thoughts and streamline wo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
+<!-- INSTALLATION -->
 ## Installation
 
 ### Prerequisites
 
-For running the models locally, ensure you have [ollama][ollamaLogo-url] installed and running on your device. An error message reminding you to open ollama will appear if you forget.
-Ensure you have [git](https://git-scm.com/), [python][pythonLogo-url] (and presumably pip too). Best bet, download the official release for your platform (Operating System) from the provided homepages and their download section. On Windows, your best bet is to use the resulting Git Bash application that will become available after installing git.
+- [Python 3.9+][pythonLogo-url] with pip
+- [Git](https://git-scm.com/) (with submodule support)
+- [Ollama][ollamaLogo-url] installed and running (for local models)
 
-Comfirm prerequisites by running the following command:
+Confirm prerequisites:
 ```bash
 git --version && python --version && pip --version
 ```
 
-Download and navigate into the repository:
+Clone the repository with submodules:
 ```bash
-git clone https://github.com/montymi/sesh-cli/ && cd sesh-cli
+git clone --recurse-submodules https://github.com/montymi/sesh-cli.git && cd sesh-cli
 ```
 
 ### Setup
 
-It is highly recommended to run this in an isolated installation with virtual environments.
+Create and activate a virtual environment:
 
-On Unix, Linux, BSD, macOS, and Cygwin:
+On Unix/macOS:
 ```bash
 python -m venv venv
 source venv/bin/activate
 ```
+
 On Windows:
 ```bash
 python -m venv venv
-venv/Scripts/activate
+venv\Scripts\activate
 ```
 
-Next install the dependencies for the project defined in `requirements.txt`. On all OS run:
+Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
+### Configuration
+
+Sesh reads settings from a `config.ini` file in the project root. The default configuration uses Ollama with `llama3.1:latest`:
+
+```ini
+[settings]
+debug = false
+clerk = ollama          # or "gpt" for OpenAI
+librarian = file
+llm = llama3.1:latest
+
+[library.file]
+data = library
+
+[library.mongo]
+url =
+username =
+password =
+
+[keys]
+openai =                # required if clerk = gpt
+```
+
+Set `clerk = gpt` and provide your OpenAI API key under `[keys]` to use OpenAI models instead of Ollama.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
+<!-- USAGE -->
 ## Usage
 
 ### Getting Started
 
-Navigate into the main folder for the source code:
+Navigate to the source directory and run:
 ```bash
 cd src
-```
-
-Run the CLI using the following command:
-```bash
 python main.py
 ```
 
-The script will:
-- Display a list of all locally installed models within Ollama.
-- Prompt you to select a model to use.
+On startup, Sesh will:
+1. Display available Ollama models (or connect to OpenAI)
+2. Prompt you to select a model
+3. Show saved conversations and let you resume one or start fresh
 
-After selecting a model, a list of saved conversations will appear and you can:
-- Resume a previous conversation for the selected model.
-- Test conversation responses across different models.
-- Start with a fresh conversation
+Type your questions at the `>>>` prompt. Sesh performs a similarity search on your embedded documents to provide relevant context with every response.
 
-### Advanced
+### Services
 
-The actual *guide* part is still a work in progress for the advanced features, but will be released soon.
+Type any of these commands at the `>>>` prompt (with autocomplete):
 
-#### Vector Database Management
+| Command | Description |
+|---------|-------------|
+| `help` | Display assistant introduction |
+| `habits` | Add, toggle, or manage prompt augmentation habits |
+| `import` | Import documents (PDF, DOCX, CSV, images, URLs, directories) into the vector store |
+| `export` | Export conversations to a directory |
+| `notes` | Create, read, update, delete, and search journal notes |
+| `conversation` | Trim, clear, save, load, delete, or search conversations |
+| `exit` | Exit the application |
 
-- Seamlessly manage vector databases to enhance Retrieval-Augmented Generation (RAG) efficiency.
-- Leverage optimized indexing for fast and accurate retrieval of relevant information.
-- Add, update, and remove data vectors for adaptive knowledge storage.
+Custom plugins placed in `resources/plugins/` are automatically discovered and registered as additional commands.
 
-#### Switching to OpenAI API
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- Effortlessly switch between locally installed models and the OpenAI API.
-- Configure API keys and settings directly through the CLI for quick integration.
-- Utilize OpenAI's advanced models for complex problem-solving and contextual tasks.
+<!-- ARCHITECTURE -->
+## Architecture
 
-#### Model Habit Management
+Sesh follows an **MVC pattern** with a plugin system:
 
-- Customize model behavior by defining "habits" for interaction styles, response formats, or tone preferences.
-- Save and load habit configurations to ensure consistency across sessions.
+```
+User Input (prompt_toolkit)
+  --> AppController (boot & orchestration)
+    --> ClerkController (conversation loop)
+      --> ServiceController (command dispatch + plugin discovery)
+      --> Clerk (LLM wrapper: Ollama or GPT)
+        --> Librarian (RAG pipeline, vector store, importers, journal)
+        --> Habits (prompt augmentation)
+    --> CLI View (presentation)
+```
 
-#### Notes Creation and Management
+**Core flow:** User input is first checked against registered service commands. If no match, it becomes a chat message. The Clerk performs a similarity search on ChromaDB for RAG context, appends active habit prompts, and invokes the LLM. The response is displayed along with source documents.
 
-- Create, edit, and organize notes within isolated research bubbles.
-- Tag notes for quick reference and improved discoverability.
-
-#### Plugin Development and Integration
-
-- Build custom plugins to extend functionality and meet specific workflow needs.
-- Add plugins dynamically without interrupting active sessions.
-- Use the CLI to manage, enable, or disable plugins for seamless customization.
+**Plugin system:** `PluginManager` and `ImporterManager` dynamically discover `Command` and `Importer` subclasses by scanning directories at runtime using `importlib` and `inspect`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -167,68 +207,63 @@ The actual *guide* part is still a work in progress for the advanced features, b
 ## Structure
 
 ```
-.gitignore
-config.ini
-config.ini.example
+config.ini              # Application settings (clerk type, LLM, paths, API keys)
+requirements.txt        # Python dependencies
+LICENSE.txt             # GPL-3.0 license
 docs/
-├── designs/
-│   ├── models.wsd
-│   └── tiers.wsd
-library/
-├── habits.json
-├── resources/
-│   ├── conversations/
-│   ├── journal/
-│   ├── plugins/
-│   └── vectors/
-README.md
-requirements.txt
-sesh.log
+  designs/              # PlantUML design diagrams
+    models.wsd
+    tiers.wsd
+library/                # Runtime data directory (created automatically)
+  habits.json           # Active/inactive habit definitions
+  resources/
+    conversations/      # Saved conversation .conv files
+    journal/            # Notes as JSON + Whoosh search index
+    plugins/            # Custom command plugins (auto-discovered)
+    vectors/            # ChromaDB vector store
 src/
-├── controllers/
-│   ├── appcontroller.py
-│   ├── clerkcontroller.py
-│   ├── libcontroller.py
-│   ├── servicecontroller.py
-│   └── usercontroller.py
-├── main.py
-├── models/
-│   ├── __init__.py
-│   ├── app.py
-│   ├── clerk.py
-│   ├── commands.py
-│   ├── DBLibrarian.py
-│   ├── habits.py
-│   ├── importers/
-│   │   ├── __init__.py
-│   │   ├── CSVImporter.py
-│   │   ├── DirectoryImporter.py
-│   │   ├── DocxImporter.py
-│   │   ├── ImageImporter.py
-│   │   ├── importer.py
-│   │   ├── PDFImporter.py
-│   │   ├── PythonImporter.py
-│   │   ├── RecursiveDirectoryImporter.py
-│   │   ├── TextImporter.py
-│   │   └── URLImporter.py
-│   ├── journal.py
-│   ├── librarian.py
-│   ├── managers.py
-│   └── user.py
-└── views/
-    └── cli.py
-sandbox/
-├── __init__.py
-├── chain.py
-├── chat-app.py
-├── clerk.py
-├── colored-input.py
-├── dict.py
-├── input.py
-├── log.txt
-├── testing.py
-├── translator.py
-└── tts.py
+  main.py               # Entry point
+  controllers/
+    appcontroller.py    # Top-level orchestrator (boot, model init, run loop)
+    clerkcontroller.py  # Conversation loop (entry -> response -> context)
+    servicecontroller.py # Command dispatch + plugin discovery
+    libcontroller.py    # Conversation persistence
+    usercontroller.py   # Login/register (WIP)
+  models/
+    app.py              # Config reader (config.ini)
+    clerk.py            # AI chat model (OllamaClerk, GPTClerk)
+    librarian.py        # RAG pipeline, storage, embeddings, importers
+    commands.py         # Built-in service commands (help, exit, habits, etc.)
+    habits.py           # Prompt augmentation system
+    journal.py          # Note CRUD with Whoosh full-text search
+    managers.py         # Plugin & importer dynamic discovery
+    user.py             # User model (MongoDB, WIP)
+    DBlibrarian.py      # MongoDB librarian variant (WIP)
+    importers/
+      importer.py       # Importer ABC
+      CSVImporter.py    # CSV document loader
+      PDFImporter.py    # PDF document loader
+      DocxImporter.py   # DOCX document loader
+      ImageImporter.py  # Image document loader
+      TextImporter.py   # Plain text loader
+      PythonImporter.py # Python source loader
+      URLImporter.py    # Web URL loader
+      DirectoryImporter.py          # Directory loader
+      RecursiveDirectoryImporter.py # Recursive directory loader
+  views/
+    cli.py              # CLI view (prompt_toolkit)
+packages/
+  linguist/             # Git submodule: speech-to-text & TTS
+    src/
+      controller.py     # Linguist controller
+      commands.py       # Speech commands (speak, listen, transcribe)
+      models/
+        linguist.py     # Whisper STT integration
+        microphone.py   # Audio recording
+      packages/
+        tts/            # Kokoro text-to-speech engine
+      views/            # Abstract/CLI/GUI/headless views
+sandbox/                # Experimental prototypes (not part of main app)
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -236,9 +271,13 @@ sandbox/
 <!-- TASKS -->
 ## Tasks
 
-- [ ] Fix reference error for `resources/`
+- [ ] Remove debug `pdb.set_trace()` from `src/main.py`
+- [ ] Fix `self.user` reference error in `src/controllers/clerkcontroller.py`
+- [ ] Deduplicate `packages/linguist/` and `src/packages/linguist/`
+- [ ] Fix mutable default argument in `Clerk.chat()` (`history=[]`)
+- [ ] Wire up `UserController` for login/register flow
 - [ ] Add CI/CD testing for deployment to `main`
-- [ ] package and post to PIP
+- [ ] Package and publish to PyPI
 
 See the [open issues](https://github.com/montymi/sesh-cli/issues) for a full list of issues and proposed features.
 
@@ -267,7 +306,7 @@ Distributed under the GPL-3.0 License. See `LICENSE.txt` for more information.
 
 Michael Montanaro
 
-[![LinkedIn][linkedin-shield]][linkedin-url] 
+[![LinkedIn][linkedin-shield]][linkedin-url]
 [![GitHub][github-shield]][github-url]
 
 <br />
@@ -275,37 +314,25 @@ Michael Montanaro
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list any resources used or that may be helpful in understanding the project
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
+* [LangChain](https://langchain.com/) - LLM framework and document loaders
+* [ChromaDB](https://www.trychroma.com/) - Vector store for RAG
+* [Ollama](https://ollama.com/) - Local LLM runtime
+* [Whisper](https://github.com/openai/whisper) - Speech-to-text
+* [Kokoro](https://github.com/hexgrad/kokoro) - Text-to-speech
+* [prompt_toolkit](https://python-prompt-toolkit.readthedocs.io/) - Rich CLI input
+* [Whoosh](https://whoosh.readthedocs.io/) - Full-text search engine
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[openaiLogo]: https://img.shields.io/badge/Whisper-black?style=for-the-badge&logo=openai&logoColor=natural
+[openaiLogo]: https://img.shields.io/badge/OpenAI-black?style=for-the-badge&logo=openai&logoColor=natural
 [openaiLogo-url]: https://openai.com/
 [langchainLogo-url]: https://langchain.com/
 [langchainLogo]: https://img.shields.io/badge/LangChain-black?style=for-the-badge&logo=langchain&logoColor=natural
 [ollamaLogo]: https://img.shields.io/badge/Ollama-black?style=for-the-badge&logo=ollama
 [ollamaLogo-url]: https://ollama.com/
-[demoLogo]: https://img.shields.io/badge/🚀%20Explore%20Demo-grey?style=for-the-badge
-[demoLogo-url]: https://github.com/montymi/sesh-cli
-[bugLogo]: https://img.shields.io/badge/🐛%20Report%20Bug-grey?style=for-the-badge
-[bugLogo-url]: https://github.com/montymi/sesh-cli/issues
-[featureLogo]: https://img.shields.io/badge/✨%20Request%20Feature-grey?style=for-the-badge
-[featureLogo-url]: https://github.com/montymi/sesh-cli/issues
 [pythonLogo]: https://img.shields.io/badge/Python-black?style=for-the-badge&logo=python&logoColor=natural
 [pythonLogo-url]: https://python.org/
-[markdownLogo]: https://img.shields.io/badge/Markdown-black?style=for-the-badge&logo=markdown&logoColor=natural
-[markdownLogo-url]: https://daringfireball.net/projects/markdown/
-[htmlLogo]: https://img.shields.io/badge/HTML5-black?style=for-the-badge&logo=html5&logoColor=natural
-[htmlLogo-url]: https://html.spec.whatwg.org/
 [creatorLogo]: https://img.shields.io/badge/-Created%20by%20montymi-maroon.svg?style=for-the-badge
 [creatorProfile]: https://montymi.com/
 [contributors-shield]: https://img.shields.io/github/contributors/montymi/sesh-cli?style=for-the-badge
@@ -322,19 +349,3 @@ Use this space to list any resources used or that may be helpful in understandin
 [linkedin-url]: https://linkedin.com/in/michael-montanaro
 [github-shield]: https://img.shields.io/badge/-GitHub-black.svg?style=for-the-badge&logo=github
 [github-url]: https://github.com/montymi
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
